@@ -1,0 +1,1 @@
+web: gunicorn maskdet.wsgi --log-file -
