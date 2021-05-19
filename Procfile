@@ -1,1 +1,1 @@
-web:gunicorn maskdet.wsgi --log-file -
+web: gunicorn maskdet.wsgi
