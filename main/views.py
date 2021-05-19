@@ -21,7 +21,8 @@ database=firebase.database()
 
 def home(request):
     n = database.child('name').get().val()
-    dt = database.child('date').get().val()
-    return render(request,"home.html",{"n":n,"dt":dt })
+    d = database.child('date').get().val()
+    t=  database.child('time').get().val()
+    return render(request,"home.html",{"n":n,"d":d, "t":t })
 
     
