@@ -1,1 +1,1 @@
-web: gunicorn maskdet.wsgi
+web: gunicorn dj_firebase.wsgi
