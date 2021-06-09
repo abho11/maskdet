@@ -4,22 +4,46 @@
         th, td, p, input, h3 {
             font:15px 'Segoe UI';
         }
+        h1 {
+  text-align: center;
+}
+h2 {
+  text-align: left;
+}
         table, th, td {
             width: 100;
             height: 100;
+            
             border: solid 2px #ddd;
             border-collapse: collapse;
             padding: 2px 3px;
-            text-align: center; 
+            text-align: left; 
             
-  padding-right: 30px;
-  
-  padding-left: 20px;
+            
+ 
         }
+        .center {
+
+  margin-right: 100%;
+}
         th {
             font-weight:bold;
             
         }
+        #container {
+          margin-top: 50px;
+  
+	width: 500px;
+	height: 375px;
+	border: 3px rgb(0, 0, 0) solid;
+}
+#videoElement {
+	width: 500px;
+	height: 375px;
+	background-color: #666;
+  
+}
+
     </style>
     <head>
         
@@ -28,14 +52,15 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       </head>
       <body>
-
+     
 
        
         
         
-              <h>Mask Detection</h>
-              
-              <table id="policy_table">
+              <h1>Face Recognition and Mask Detection With Alert</h1>
+              <h2>Date and Name of Faulters</h2>
+              <table class="center" id="policy_table"
+              cellspacing="0" cellpadding="0"  width="50%" >
                 <tr>
                   <th>Date</th>
                   <th>Name</th>
@@ -49,7 +74,11 @@
 
 
 
-
+          <div id="container">
+            <video autoplay="true" id="videoElement">
+            
+            </video>
+          </div>
          
 
         
@@ -82,4 +111,17 @@
 
     
 
+</script>
+<script>
+  var video = document.querySelector("#videoElement");
+
+if (navigator.mediaDevices.getUserMedia) {
+  navigator.mediaDevices.getUserMedia({ video: true })
+    .then(function (stream) {
+      video.srcObject = stream;
+    })
+    .catch(function (err0r) {
+      console.log("Something went wrong!");
+    });
+}
 </script>
