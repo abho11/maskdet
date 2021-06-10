@@ -14,7 +14,7 @@ ref=db.reference("defaulters")
 
 
 def home(request):
- '''
+ 
  l=[]
  k=ref.order_by_key().get()
  
@@ -24,7 +24,7 @@ def home(request):
  print(json_data)    
  with open('main/static/app.json', 'w') as file:
     file.write(json_data)     
-'''
+
  return render(request,'home.html')
 
 
