@@ -11,7 +11,13 @@ from firebase_admin import auth
 cred=credentials.Certificate("finalyearnmit-firebase-adminsdk-sk5ac-a5da39de07.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://finalyearnmit-default-rtdb.firebaseio.com/'})
 ref=db.reference("defaulters")
-
+'''
+data = {
+'Name': 'Mihir',
+'Date': '18-06-2021'
+}
+ref.push(data)
+'''
 
 def home(request):
  
