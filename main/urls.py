@@ -6,4 +6,5 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home),
+    path('photo/', views.capture, name="capture"),
 ]

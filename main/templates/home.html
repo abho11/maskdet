@@ -37,12 +37,6 @@ h2 {
 	height: 375px;
 	border: 3px rgb(0, 0, 0) solid;
 }
-#videoElement {
-	width: 500px;
-	height: 375px;
-	background-color: #666;
-  
-}
 
     </style>
     <head>
@@ -51,41 +45,33 @@ h2 {
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.js"/>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
       </head>
-      <body>
      
-
-       
-        
-        
+      <body>
               <h1>Face Recognition and Mask Detection With Alert</h1>
               <h2>Date and Name of Faulters</h2>
-              
+           
               <table class="center" id="policy_table"
               cellspacing="0" cellpadding="0"  width="50%" >
                 <tr>
                   <th>Date</th>
                   <th>Name</th>
-                 
-                   
                         </tr>
+                        
               </table>
+              <div>
+                <br>
+                <br>
+              <form action="/photo/", method="POST">
+                {% csrf_token %}
               
-          </div>
-          </div>
-
-
-<!----
-          <div id="container">
-            
-            <video autoplay="true" id="videoElement">
-            
-            </video>
-          </div>
+                <div style="text-align:center">  
+                <input type="submit" allign="center" id="sideButton" name="capture" value="Take Photo"  >
+              </div>  
+              </form>
+              </div>
          
-        -->
+         
         
-       
-    
 </body>
 </html>
 
@@ -109,23 +95,6 @@ h2 {
                                                          $('#policy_table').append(policy);
                  });     
             });
-     
-
     
-
 </script>
-<!----------
-<script>
-  var video = document.querySelector("#videoElement");
 
-if (navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia({ video: true })
-    .then(function (stream) {
-      video.srcObject = stream;
-    })
-    .catch(function (err0r) {
-      console.log("Something went wrong!");
-    });
-}
-</script>
--->
