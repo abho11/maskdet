@@ -1,0 +1,42 @@
+ERROR:django.request:Internal Server Error: /photo/
+Traceback (most recent call last):
+  File "C:\Users\SaiArunabhRoy\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\SaiArunabhRoy\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\SaiArunabhRoy\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\SaiArunabhRoy\Desktop\maskdet\main\views.py", line 58, in capture
+    minSize=(30, 30)
+cv2.error: OpenCV(3.4.4) C:\projects\opencv-python\opencv\modules\objdetect\src\cascadedetect.cpp:1698: error: (-215:Assertion failed) !empty() in function 'cv::CascadeClassifier::detectMultiScale'
+
+INFO:django.utils.autoreload:C:\Users\SaiArunabhRoy\Desktop\maskdet\main\views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /photo/
+Traceback (most recent call last):
+  File "C:\Users\SaiArunabhRoy\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\SaiArunabhRoy\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\SaiArunabhRoy\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\SaiArunabhRoy\Desktop\maskdet\main\views.py", line 57, in capture
+    minNeighbors=5,
+cv2.error: OpenCV(3.4.4) C:\projects\opencv-python\opencv\modules\objdetect\src\cascadedetect.cpp:1698: error: (-215:Assertion failed) !empty() in function 'cv::CascadeClassifier::detectMultiScale'
+
+INFO:django.utils.autoreload:C:\Users\SaiArunabhRoy\Desktop\maskdet\main\views.py changed, reloading.
+INFO:django.utils.autoreload:C:\Users\SaiArunabhRoy\Desktop\maskdet\main\views.py changed, reloading.
+ERROR:django.request:Internal Server Error: /photo/
+Traceback (most recent call last):
+  File "C:\Users\SaiArunabhRoy\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\exception.py", line 34, in inner
+    response = get_response(request)
+  File "C:\Users\SaiArunabhRoy\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 115, in _get_response
+    response = self.process_exception_by_middleware(e, request)
+  File "C:\Users\SaiArunabhRoy\AppData\Local\Programs\Python\Python37\lib\site-packages\django\core\handlers\base.py", line 113, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "C:\Users\SaiArunabhRoy\Desktop\maskdet\main\views.py", line 62, in capture
+    img_new = cv2.imshow("Captured Image", img_new)
+cv2.error: OpenCV(3.4.4) C:\projects\opencv-python\opencv\modules\highgui\src\window.cpp:356: error: (-215:Assertion failed) size.width>0 && size.height>0 in function 'cv::imshow'
+
+INFO:django.utils.autoreload:C:\Users\SaiArunabhRoy\Desktop\maskdet\main\views.py changed, reloading.
+INFO:django.utils.autoreload:C:\Users\SaiArunabhRoy\Desktop\maskdet\main\views.py changed, reloading.
+INFO:django.utils.autoreload:C:\Users\SaiArunabhRoy\Desktop\maskdet\main\views.py changed, reloading.
