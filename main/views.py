@@ -45,8 +45,7 @@ def capture(request):
                webcam.release()
                cv2.destroyAllWindows()
                return render(request,'home.html')
-               
-         
+                 
          elif key == ord('q'):
                webcam.release()
                cv2.destroyAllWindows()
@@ -56,8 +55,6 @@ def capture(request):
       except(KeyboardInterrupt):
          print("Turning off camera.")
          webcam.release()
-         print("Camera off.")
-         print("Program ended.")
          cv2.destroyAllWindows()
          return render(request,'home.html')
           
