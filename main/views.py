@@ -38,10 +38,10 @@ def capture(request):
          check, frame = webcam.read()
          print(check) #prints true as long as the webcam is running
          print(frame) #prints matrix values of each framecd 
-        # cv2.imshow("Capturing", frame)
+         cv2.imshow("Capturing", frame)
          key = cv2.waitKey(1)
          if key == ord('s'): 
-               cv2.imwrite(filename='./main/static/saved_img.jpg', img=frame)
+               cv2.imwrite(filename="/main/static/saved_img.jpg", img=frame)
                webcam.release()
                cv2.destroyAllWindows()
                return render(request,'home.html')
