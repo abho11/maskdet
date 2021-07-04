@@ -55,7 +55,7 @@ def capture(request):
 
          check, frame = video_capture.read()
          cv2.imshow("Capturing", frame)
-         cv2.imwrite(filename='saved_img.jpg', img=frame)
+         cv2.imwrite(filename='/main/static/saved_img.jpg', img=frame)
          video_capture.release()
       
          cv2.destroyAllWindows()
