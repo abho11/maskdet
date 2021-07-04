@@ -13,6 +13,7 @@ cycler==0.10.0
 Cython==0.29.16
 dj-database-url==0.5.0
 Django==3.0.5
+face-recognition-models==0.3.0
 firebase-admin==5.0.1
 Flask==1.1.2
 gast==0.3.3
@@ -50,6 +51,7 @@ mtcnn==0.1.0
 numpy==1.18.2
 oauthlib==3.1.0
 opencv-python==3.4.4.19
+opencv-python-headless==4.5.2.54
 opt-einsum==3.3.0
 packaging==20.9
 Pillow==7.1.1
@@ -77,6 +79,7 @@ sklearn==0.0
 sqlparse==0.3.1
 tensorboard==2.3.0
 tensorboard-plugin-wit==1.7.0
+tensorflow==2.3.0
 tensorflow-estimator==2.3.0
 termcolor==1.1.0
 tesseract==0.1.3
