@@ -39,7 +39,7 @@ def capture(request):
       while True :
             
          ret,frame = cam.read()
-         cv.imshow('frame', frame)
+         #cv.imshow('frame', frame)
          if ret:
             if cv.waitKey(1) & 0xFF == ord('s'): 
                   name = directory +temp+ '.jpg'
