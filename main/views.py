@@ -42,7 +42,7 @@ def capture(request):
    if not os.path.exists(directory):
     os.makedirs(directory) 
    #try : 
-   while(cam.isOpened()) :
+   while True :
          
       ret,frame = cam.read()
       
