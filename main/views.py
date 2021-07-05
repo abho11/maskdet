@@ -58,9 +58,11 @@ def capture(request):
                cv2.destroyAllWindows()
                return render(request,'home.html')
     
-   
+ else :
+      return render(request,'home.html')
 
-   '''
+
+'''
    
    log.basicConfig(filename='webcam.log',level=log.INFO)
 
