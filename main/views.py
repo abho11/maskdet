@@ -39,9 +39,10 @@ def capture(request):
    while True :
          
       ret,frame = cam.read()
-      cv.imshow('frame', frame)
+      
       if ret:
-         if cv.waitKey(1) & 0xFF == ord('s'): 
+       cv.imshow('frame', frame) 
+       if cv.waitKey(1) & 0xFF == ord('s'): 
                name = directory +temp+ '.jpg'
                print ('Creating...' + name) 
                cv.imwrite(name, frame)
@@ -49,7 +50,7 @@ def capture(request):
                cv.destroyAllWindows()
                return render(request,'home.html')
 
-         elif cv.waitKey(1) & 0xFF == ord('q'):   
+       elif cv.waitKey(1) & 0xFF == ord('q'):   
                   cam.release()
                   cv.destroyAllWindows()
                   return render(request,'home.html')
