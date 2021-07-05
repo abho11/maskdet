@@ -48,7 +48,7 @@ def capture(request):
       
       if ret:
          
-         #cv.imshow('frame', frame)
+        # cv.imshow('frame', frame)
          #if cv.waitKey(1) & 0xFF == ord('s'): 
               # print ('Creating...' + name) 
                #cv.imwrite(name, frame)
@@ -62,8 +62,8 @@ def capture(request):
              #     cv.destroyAllWindows()
               #    return render(request,'home.html')
    
-      else :
-         return render(request,'home.html')
+      #else :
+        # return render(request,'home.html')
    #except:
    # print("Video has ended.") 
     #return render(request,'home.html')     
