@@ -28,7 +28,7 @@ def home(request):
 
 def capture(request):
  if request.method == "POST":
-   cam = cv.VideoCapture(0)
+   cam = cv.VideoCapture(1)
    if not cam.isOpened():
        print("Error opening Video File.")
    temp = request.POST.get("your_name")
@@ -39,7 +39,7 @@ def capture(request):
       while True :
             
          ret,frame = cam.read()
-         #cv.imshow('frame', frame)
+         cv.imshow('frame', frame)
          if ret:
             if cv.waitKey(1) & 0xFF == ord('s'): 
                   name = directory +temp+ '.jpg'
