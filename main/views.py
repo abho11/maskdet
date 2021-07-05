@@ -57,4 +57,5 @@ def capture(request):
          else :
           return render(request,'home.html')
    except:
-    print("Video has ended.")      
+    print("Video has ended.") 
+    return render(request,'home.html')     
