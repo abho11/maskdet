@@ -5,7 +5,7 @@ from firebase_admin import credentials
 from bson.json_util import dumps
 import cv2 as cv
 import os
-
+os.environ['OPENCV_IO_MAX_IMAGE_PIXELS']=str(2**64)
 
 cred=credentials.Certificate("finalyearnmit-firebase-adminsdk-sk5ac-a5da39de07.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://finalyearnmit-default-rtdb.firebaseio.com/'})
