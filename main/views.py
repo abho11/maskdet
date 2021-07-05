@@ -11,7 +11,7 @@ import threading
 import cv2
 from time import sleep
 import logging as log
-
+import os
 
 cred=credentials.Certificate("finalyearnmit-firebase-adminsdk-sk5ac-a5da39de07.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://finalyearnmit-default-rtdb.firebaseio.com/'})
@@ -32,7 +32,33 @@ def home(request):
  return render(request,'home.html')
 
 def capture(request):
+  
+   cam = cv2.VideoCapture(0)
+   id = input('Name:')
+   directory = './main/static/'+str(id) +'/'
+   if not os.path.exists(directory):
+    os.makedirs(directory) 
+   while(True):
+         
+      ret,frame = cam.read()
+      cv2.imshow('Video', frame)
+
+      if cv2.waitKey(1) & 0xFF == ord('s'): 
+            name = directory +str(id)+ '.jpg'
+            print ('Creating...' + name) 
+            cv2.imwrite(name, frame)
+            cam.release()
+            cv2.destroyAllWindows()
+            return render(request,'home.html')
+
+      elif cv2.waitKey(1) & 0xFF == ord('q'):   
+               cam.release()
+               cv2.destroyAllWindows()
+               return render(request,'home.html')
+    
    
+   
+   '''
    
    log.basicConfig(filename='webcam.log',level=log.INFO)
 
@@ -76,6 +102,7 @@ def capture(request):
    video_capture.release()
    cv2.destroyAllWindows()
 '''   
+'''
    key = cv2. waitKey(1)
    webcam = cv2.VideoCapture(0)
    sleep(2)
