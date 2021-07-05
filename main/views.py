@@ -29,27 +29,32 @@ def home(request):
 def capture(request):
  if request.method == "POST":
    cam = cv2.VideoCapture(0)
+   if not cam.isOpened():
+       print("Error opening Video File.")
    temp = request.POST.get("your_name")
    directory = './main/static/people/'+temp +'/'
    if not os.path.exists(directory):
     os.makedirs(directory) 
-   while(True):
-         
-      ret,frame = cam.read()
-      cv2.imshow('frame', frame)
-      if ret:
-         if cv2.waitKey(1) & 0xFF == ord('s'): 
-               name = directory +temp+ '.jpg'
-               print ('Creating...' + name) 
-               cv2.imwrite(name, frame)
-               cam.release()
-               cv2.destroyAllWindows()
-               return render(request,'home.html')
-
-         elif cv2.waitKey(1) & 0xFF == ord('q'):   
+   try : 
+      while True :
+            
+         ret,frame = cam.read()
+         cv2.imshow('frame', frame)
+         if ret:
+            if cv2.waitKey(1) & 0xFF == ord('s'): 
+                  name = directory +temp+ '.jpg'
+                  print ('Creating...' + name) 
+                  cv2.imwrite(name, frame)
                   cam.release()
                   cv2.destroyAllWindows()
                   return render(request,'home.html')
-    
-      else :
-       return render(request,'home.html')
+
+            elif cv2.waitKey(1) & 0xFF == ord('q'):   
+                     cam.release()
+                     cv2.destroyAllWindows()
+                     return render(request,'home.html')
+      
+         else :
+          return render(request,'home.html')
+   except:
+    print("Video has ended.")      
