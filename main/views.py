@@ -28,7 +28,7 @@ def home(request):
 
 def capture(request):
  if request.method == "POST":
-   cam = cv.VideoCapture(1)
+   cam = cv.VideoCapture('./main/static/drop.avi')
    if not cam.isOpened():
        print("Error opening Video File.")
    temp = request.POST.get("your_name")
