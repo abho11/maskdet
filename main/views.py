@@ -40,10 +40,10 @@ def capture(request):
    directory = './main/static/people/'+temp +'/'
    if not os.path.exists(directory):
     os.makedirs(directory) 
-   while(True):
+   while(cam.isOpened()):
          
       ret,frame = cam.read()
-      cv2.imshow('Video', frame)
+      cv2.imshow('frame', frame)
 
       if cv2.waitKey(1) & 0xFF == ord('s'): 
             name = directory +temp+ '.jpg'
@@ -59,7 +59,7 @@ def capture(request):
                return render(request,'home.html')
     
    
-   
+
    '''
    
    log.basicConfig(filename='webcam.log',level=log.INFO)
