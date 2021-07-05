@@ -29,10 +29,16 @@ def home(request):
 def capture(request):
  if request.method == "POST":
    cam = cv.VideoCapture(0)
+   width  = cam.get(3) 
+   height = cam.get(4)
+   fourcc = cv.VideoWriter_fourcc(*"MJPG")
+   
    if not cam.isOpened():
        print("Error opening Video File.")
    temp = request.POST.get("your_name")
    directory = './main/static/people/'+temp +'/'
+   name = directory +temp+ '.jpg'
+   out_video = cv.VideoWriter(name, fourcc, 20.0, (int(width), int(height)), True)
    if not os.path.exists(directory):
     os.makedirs(directory) 
    #try : 
@@ -42,9 +48,11 @@ def capture(request):
       cv.imshow('frame', frame)
       if ret:
          if cv.waitKey(1) & 0xFF == ord('s'): 
-               name = directory +temp+ '.jpg'
+               
                print ('Creating...' + name) 
-               cv.imwrite(name, frame)
+               #cv.imwrite(name, frame)
+               out_video.write(frame)
+               print(out_video)
                cam.release()
                cv.destroyAllWindows()
                return render(request,'home.html')
