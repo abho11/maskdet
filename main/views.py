@@ -35,27 +35,27 @@ def capture(request):
    directory = './main/static/people/'+temp +'/'
    if not os.path.exists(directory):
     os.makedirs(directory) 
-   try : 
-      while True :
-            
-         ret,frame = cam.read()
-         cv.imshow('frame', frame)
-         if ret:
-            if cv.waitKey(1) & 0xFF == ord('s'): 
-                  name = directory +temp+ '.jpg'
-                  print ('Creating...' + name) 
-                  cv.imwrite(name, frame)
+   #try : 
+   while True :
+         
+      ret,frame = cam.read()
+      cv.imshow('frame', frame)
+      if ret:
+         if cv.waitKey(1) & 0xFF == ord('s'): 
+               name = directory +temp+ '.jpg'
+               print ('Creating...' + name) 
+               cv.imwrite(name, frame)
+               cam.release()
+               cv.destroyAllWindows()
+               return render(request,'home.html')
+
+         elif cv.waitKey(1) & 0xFF == ord('q'):   
                   cam.release()
                   cv.destroyAllWindows()
                   return render(request,'home.html')
-
-            elif cv.waitKey(1) & 0xFF == ord('q'):   
-                     cam.release()
-                     cv.destroyAllWindows()
-                     return render(request,'home.html')
-      
-         else :
-          return render(request,'home.html')
-   except:
-    print("Video has ended.") 
-    return render(request,'home.html')     
+   
+      else :
+         return render(request,'home.html')
+   #except:
+   # print("Video has ended.") 
+    #return render(request,'home.html')     
