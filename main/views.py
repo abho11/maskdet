@@ -42,25 +42,25 @@ def capture(request):
    if not os.path.exists(directory):
     os.makedirs(directory) 
    #try : 
-   while True :
+   while(cam.isOpened()) :
          
       ret,frame = cam.read()
-      cv.imshow('frame', frame)
+      
       if ret:
-         if cv.waitKey(1) & 0xFF == ord('s'): 
-               
-               print ('Creating...' + name) 
+         
+         #cv.imshow('frame', frame)
+         #if cv.waitKey(1) & 0xFF == ord('s'): 
+              # print ('Creating...' + name) 
                #cv.imwrite(name, frame)
-               out_video.write(frame)
-               print(out_video)
-               cam.release()
-               cv.destroyAllWindows()
-               return render(request,'home.html')
+         out_video.write(frame)
+         cam.release()
+         cv.destroyAllWindows()
+         return render(request,'home.html')
 
-         elif cv.waitKey(1) & 0xFF == ord('q'):   
-                  cam.release()
-                  cv.destroyAllWindows()
-                  return render(request,'home.html')
+         #elif cv.waitKey(1) & 0xFF == ord('q'):   
+             #     cam.release()
+             #     cv.destroyAllWindows()
+              #    return render(request,'home.html')
    
       else :
          return render(request,'home.html')
