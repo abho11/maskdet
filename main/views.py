@@ -33,6 +33,7 @@ def capture(request):
    height = cam.get(4)
    fourcc = cv.VideoWriter_fourcc(*"MJPG")
    
+   
    if not cam.isOpened():
        print("Error opening Video File.")
    temp = request.POST.get("your_name")
@@ -47,7 +48,8 @@ def capture(request):
       ret,frame = cam.read()
       
       if ret:
-         
+         cv.namedWindow("Hello", cv.WINDOW_AUTOSIZE)
+         cv.imshow("Hello", frame)
         # cv.imshow('frame', frame)
          #if cv.waitKey(1) & 0xFF == ord('s'): 
               # print ('Creating...' + name) 
