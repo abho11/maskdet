@@ -13,6 +13,7 @@ from time import sleep
 import logging as log
 import os
 
+
 cred=credentials.Certificate("finalyearnmit-firebase-adminsdk-sk5ac-a5da39de07.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://finalyearnmit-default-rtdb.firebaseio.com/'})
 ref=db.reference("defaulters")
@@ -31,11 +32,12 @@ def home(request):
  
  return render(request,'home.html')
 
+
 def capture(request):
-  
+ if request.method == "POST":
    cam = cv2.VideoCapture(0)
-   id = input('Name:')
-   directory = './main/static/'+str(id) +'/'
+   temp = request.POST.get("your_name")
+   directory = './main/static/people/'+temp +'/'
    if not os.path.exists(directory):
     os.makedirs(directory) 
    while(True):
@@ -44,7 +46,7 @@ def capture(request):
       cv2.imshow('Video', frame)
 
       if cv2.waitKey(1) & 0xFF == ord('s'): 
-            name = directory +str(id)+ '.jpg'
+            name = directory +temp+ '.jpg'
             print ('Creating...' + name) 
             cv2.imwrite(name, frame)
             cam.release()
