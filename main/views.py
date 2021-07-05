@@ -1,16 +1,9 @@
-from datetime import date
 from django.shortcuts import render
 import firebase_admin
 from firebase_admin import db
 from firebase_admin import credentials 
 from bson.json_util import dumps
-from firebase_admin import auth
-from django.views.decorators import gzip
-from django.http import StreamingHttpResponse
-import threading
 import cv2
-from time import sleep
-import logging as log
 import os
 
 
