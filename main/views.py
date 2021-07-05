@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import db
 from firebase_admin import credentials 
 from bson.json_util import dumps
-import cv2
+import cv2 as cv
 import os
 
 
@@ -28,7 +28,7 @@ def home(request):
 
 def capture(request):
  if request.method == "POST":
-   cam = cv2.VideoCapture(0)
+   cam = cv.VideoCapture(0)
    if not cam.isOpened():
        print("Error opening Video File.")
    temp = request.POST.get("your_name")
@@ -39,19 +39,19 @@ def capture(request):
       while True :
             
          ret,frame = cam.read()
-         cv2.imshow('frame', frame)
+         cv.imshow('frame', frame)
          if ret:
-            if cv2.waitKey(1) & 0xFF == ord('s'): 
+            if cv.waitKey(1) & 0xFF == ord('s'): 
                   name = directory +temp+ '.jpg'
                   print ('Creating...' + name) 
-                  cv2.imwrite(name, frame)
+                  cv.imwrite(name, frame)
                   cam.release()
-                  cv2.destroyAllWindows()
+                  cv.destroyAllWindows()
                   return render(request,'home.html')
 
-            elif cv2.waitKey(1) & 0xFF == ord('q'):   
+            elif cv.waitKey(1) & 0xFF == ord('q'):   
                      cam.release()
-                     cv2.destroyAllWindows()
+                     cv.destroyAllWindows()
                      return render(request,'home.html')
       
          else :
