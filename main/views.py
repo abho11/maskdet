@@ -29,9 +29,9 @@ def home(request):
 def capture(request):
  if request.method == "POST":
    cam = cv.VideoCapture(0)
-   width  = cam.get(3) 
-   height = cam.get(4)
-   fourcc = cv.VideoWriter_fourcc(*"MJPG")
+  # width  = cam.get(3) 
+  # height = cam.get(4)
+   #fourcc = cv.VideoWriter_fourcc(*"MJPG")
    
    
    if not cam.isOpened():
@@ -39,25 +39,25 @@ def capture(request):
    temp = request.POST.get("your_name")
    directory = './main/static/people/'+temp +'/'
    name = directory +temp+ '.jpg'
-   out_video = cv.VideoWriter(name, fourcc, 20.0, (int(width), int(height)), True)
+  # out_video = cv.VideoWriter(name, fourcc, 20.0, (int(width), int(height)), True)
    if not os.path.exists(directory):
     os.makedirs(directory) 
    #try : 
    while True :
          
       ret,frame = cam.read()
-      
+      cv.namedWindow("Hello", cv.WINDOW_AUTOSIZE)
+      cv.imshow("Hello", frame)
       if ret:
-         cv.namedWindow("Hello", cv.WINDOW_AUTOSIZE)
-         cv.imshow("Hello", frame)
+         
         # cv.imshow('frame', frame)
-         #if cv.waitKey(1) & 0xFF == ord('s'): 
+         if cv.waitKey(10) & 0xFF == ord('s'): 
               # print ('Creating...' + name) 
-               #cv.imwrite(name, frame)
-         out_video.write(frame)
-         cam.release()
-         cv.destroyAllWindows()
-         return render(request,'home.html')
+           cv.imwrite(name, frame)
+           #out_video.write(frame)
+           cam.release()
+           cv.destroyAllWindows()
+           return render(request,'home.html')
 
          #elif cv.waitKey(1) & 0xFF == ord('q'):   
              #     cam.release()
