@@ -5,7 +5,6 @@ from firebase_admin import credentials
 from bson.json_util import dumps
 import cv2 
 import os
-from run import fun
 from scipy.spatial.distance import cosine
 import mtcnn
 from keras.models import load_model
