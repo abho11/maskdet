@@ -5,8 +5,8 @@ from firebase_admin import credentials
 from bson.json_util import dumps
 import cv2 as cv
 import os
-import pygame
-import pygame.camera
+from ecapture import ecapture as ec
+
 os.environ['OPENCV_IO_MAX_IMAGE_PIXELS']=str(2**64)
 
 cred=credentials.Certificate("finalyearnmit-firebase-adminsdk-sk5ac-a5da39de07.json")
@@ -65,10 +65,6 @@ def capture(request):
  '''
  
 
- pygame.camera.init()
- pygame.camera.list_cameras() #Camera detected or not
- cam = pygame.camera.Camera(0,(640,480))
- cam.start()
- img = cam.get_image()
- pygame.image.save(img,"./main/static/filename.jpg")
+
+ ec.capture(0,"test","./main/static/img.jpg") 
  return render(request,'home.html')
