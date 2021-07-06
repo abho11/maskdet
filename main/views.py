@@ -5,7 +5,7 @@ from firebase_admin import credentials
 from bson.json_util import dumps
 import cv2 as cv
 import os
-from ecapture import ecapture as ec
+
 
 os.environ['OPENCV_IO_MAX_IMAGE_PIXELS']=str(2**64)
 
@@ -29,7 +29,7 @@ def home(request):
 
 
 def capture(request):
- '''
+ 
  if request.method == "POST":
    cam = cv.VideoCapture(0)
    if not cam.isOpened():
@@ -62,9 +62,4 @@ def capture(request):
    #except:
    # print("Video has ended.") 
     #return render(request,'home.html')     
- '''
  
-
-
- ec.capture(0,"test","./main/static/img.jpg") 
- return render(request,'home.html')
