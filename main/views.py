@@ -5,6 +5,8 @@ from firebase_admin import credentials
 from bson.json_util import dumps
 import cv2 as cv
 import os
+import pygame
+import pygame.camera
 os.environ['OPENCV_IO_MAX_IMAGE_PIXELS']=str(2**64)
 
 cred=credentials.Certificate("finalyearnmit-firebase-adminsdk-sk5ac-a5da39de07.json")
@@ -27,6 +29,7 @@ def home(request):
 
 
 def capture(request):
+ '''
  if request.method == "POST":
    cam = cv.VideoCapture(0)
    if not cam.isOpened():
@@ -59,3 +62,13 @@ def capture(request):
    #except:
    # print("Video has ended.") 
     #return render(request,'home.html')     
+ '''
+ 
+
+ pygame.camera.init()
+ pygame.camera.list_cameras() #Camera detected or not
+ cam = pygame.camera.Camera(0,(640,480))
+ cam.start()
+ img = cam.get_image()
+ pygame.image.save(img,"./main/static/filename.jpg")
+ return render(request,'home.html')
