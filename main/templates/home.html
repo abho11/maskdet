@@ -46,17 +46,21 @@ h2 {
       <body>
               <h1>Face Recognition and Mask Detection With Alert</h1>
               <h2>Date and Name of Faulters</h2>
-           
+             <div>
               <table class="center" id="policy_table"
               cellspacing="0" cellpadding="0"  width="50%" >
                 <tr>
                   <th>Date</th>
+                  <th>Time</th>
                   <th>Name</th>
                         </tr>
                         
               </table>
-          
+              
+              </div>
+            <!----
               <div>
+                
                 <br>
                 <br>
               <form action="/photo/", method="POST">
@@ -68,15 +72,43 @@ h2 {
                     <br>
                     <br>
                 <input type="submit" allign="center" id="sideButton" name="capture" value="Take Photo"  >
+                <br>
+                <br>
               </div>  
               </form>
+             
+                <div style="text-align:center">
+                  <form  action="/video/", method="POST">
+                    {% csrf_token %}
+              <input type="submit" allign="center" id="sideButton2" name="test" value="Go Live"  >
+              </form>
+            </div>
+              --->
               </div>  
+              <br>
+             
+              <div  style="text-align:center">  
+              <form  action="/clear/"  >
+                <input type="submit" allign="center" id="sideButton3" name="delete" value="Clear Table"  >
+               
+              </form >
+            </div>
+            <br>
+            <div style="text-align:center">  
+              <form action="/show/">
+                <input type="submit" id="button1" name="show" value='Show Table'/>
+              </form>
+          
+            </div>
+          
+            
 </body>
 </html>
 
 
 <script>
    $(document).ready(function(){
+    
      $.getJSON("/static/app.json", function(data){
      
     
@@ -85,8 +117,8 @@ h2 {
                                                          $.each(data, function(key,value){
                                                           policy += '<tr>';
                                                           policy += '<td>'+value.Date+'</td>';
+                                                          policy += '<td>'+value.Time+'</td>';
                                                           policy += '<td>'+value.Name+'</td>';
-                                                         
                                                           
                                                         });
                                                          $('#policy_table').append(policy);
