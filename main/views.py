@@ -3,17 +3,12 @@ import firebase_admin
 from firebase_admin import db
 from firebase_admin import credentials 
 from bson.json_util import dumps
-import cv2 
+
 import os
-from scipy.spatial.distance import cosine
-import mtcnn
-from keras.models import load_model
+
 from utils import *
-from tensorflow.keras.models import load_model
-import numpy as np
-from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
-from tensorflow.keras.preprocessing.image import img_to_array
-from datetime import date,datetime
+
+
 
 os.environ['OPENCV_IO_MAX_IMAGE_PIXELS']=str(2**64)
 
