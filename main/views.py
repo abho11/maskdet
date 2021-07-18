@@ -3,18 +3,25 @@ import firebase_admin
 from firebase_admin import db
 from firebase_admin import credentials 
 from bson.json_util import dumps
-
+import cv2 
 import os
-
+from run import fun
+from scipy.spatial.distance import cosine
+import mtcnn
+from keras.models import load_model
 from utils import *
-
-
+from tensorflow.keras.models import load_model
+import numpy as np
+from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+from tensorflow.keras.preprocessing.image import img_to_array
+from datetime import date,datetime
 
 os.environ['OPENCV_IO_MAX_IMAGE_PIXELS']=str(2**64)
 
 cred=credentials.Certificate("finalyearnmit-firebase-adminsdk-sk5ac-a5da39de07.json")
 firebase_admin.initialize_app(cred,{'databaseURL':'https://finalyearnmit-default-rtdb.firebaseio.com/'})
 ref=db.reference("defaulters")
+
 
 def home(request):
  
@@ -30,7 +37,7 @@ def home(request):
  
  return render(request,'home.html')
 
-'''
+
 def capture(request):
  
  if request.method == "POST":
@@ -56,7 +63,7 @@ def capture(request):
                fun()
                return render(request,'home.html')
 
-         elif cv2.waitKey(1) & 0xFF == ord('q'):   
+         if cv2.waitKey(1) & 0xFF == ord('q'):   
                   cam.release()
                   cv2.destroyAllWindows()
                   fun()
@@ -71,7 +78,7 @@ def capture(request):
 
 def test(request): 
  if request.method == "POST":   
-    
+    fun()
     names_dict = {}
 
     def detect_and_predict_mask(face_,face_detector, maskNet,pt_1, pt_2):
@@ -93,7 +100,7 @@ def test(request):
                 encoder,
                 encoding_dict,
                 mask_detector,
-                recognition_t=0.4,
+                recognition_t=0.3,
                 confidence_t=0.99,
                 required_size=(160, 160) ):
 
@@ -180,7 +187,7 @@ def test(request):
         return render(request,'home.html')        
     except :
         return render(request,'home.html')    
-'''
+
 def clearTable(request):
     d = open('./main/static/app.json', "w+")
     d.truncate()

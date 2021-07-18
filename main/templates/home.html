@@ -8,7 +8,7 @@
   text-align: center;
 }
 h2 {
-  text-align: left;
+  text-align: center;
 }
         table, th, td {
             width: 100;
@@ -45,8 +45,9 @@ h2 {
      
       <body>
               <h1>Face Recognition and Mask Detection With Alert</h1>
-              <h2>Date and Name of Faulters</h2>
+              <h2>Train Your Face</h2>
              <div>
+               <!----
               <table class="center" id="policy_table"
               cellspacing="0" cellpadding="0"  width="50%" >
                 <tr>
@@ -56,13 +57,13 @@ h2 {
                         </tr>
                         
               </table>
-              
+              --->
               </div>
-            <!----
+            
               <div>
                 
                 <br>
-                <br>
+                
               <form action="/photo/", method="POST">
                 {% csrf_token %}
               
@@ -83,21 +84,11 @@ h2 {
               <input type="submit" allign="center" id="sideButton2" name="test" value="Go Live"  >
               </form>
             </div>
-              --->
+              
               </div>  
               <br>
              
-              <div  style="text-align:center">  
-              <form  action="/clear/"  >
-                <input type="submit" allign="center" id="sideButton3" name="delete" value="Clear Table"  >
-               
-              </form >
-            </div>
-            <br>
-            <div style="text-align:center">  
-              <form action="/show/">
-                <input type="submit" id="button1" name="show" value='Show Table'/>
-              </form>
+              
           
             </div>
           
